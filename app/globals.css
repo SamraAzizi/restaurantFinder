@@ -1,26 +1,160 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdf0c6;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #fefaf2;
+  --secondary: #ffe786;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f9dd8d;
+  --muted-foreground: #3d3d3d;
+  --accent: #7df2f9;
+  --accent-foreground: #0a0a0a;
+  --destructive: #f15c45;
+  --destructive-foreground: #fff8f0;
+  --border: #0a0a0a;
+  --input: #0a0a0a;
+  --ring: #0a0a0a;
+  --chart-1: #ffb703;
+  --chart-2: #00b4d8;
+  --chart-3: #ff5d8f;
+  --chart-4: #6ede8a;
+  --chart-5: #845ef7;
+  --radius: 6px;
+  --sidebar: #ffe786;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #0a0a0a;
+  --sidebar-primary-foreground: #fefaf2;
+  --sidebar-accent: #7df2f9;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #0a0a0a;
+  --sidebar-ring: #0a0a0a;
+  --neo-yellow: #ffe786;
+  --neo-cyan: #7df2f9;
+  --neo-pink: #ff8cc6;
+  --neo-green: #74f0b2;
+  --neo-shadow: 4px 4px 0px #0a0a0a;
+  --neo-shadow-sm: 2px 2px 0px #0a0a0a;
+  --neo-shadow-lg: 6px 6px 0px #0a0a0a;
+}
+
+.dark {
+  --background: #111111;
+  --foreground: #f5f5f5;
+  --card: #1b1b1b;
+  --card-foreground: #f5f5f5;
+  --popover: #1b1b1b;
+  --popover-foreground: #f5f5f5;
+  --primary: #f5f5f5;
+  --primary-foreground: #0a0a0a;
+  --secondary: #222222;
+  --secondary-foreground: #f5f5f5;
+  --muted: #262626;
+  --muted-foreground: #9d9d9d;
+  --accent: #0fb9b1;
+  --accent-foreground: #0a0a0a;
+  --destructive: #ef3e36;
+  --destructive-foreground: #fff8f0;
+  --border: #f5f5f5;
+  --input: #f5f5f5;
+  --ring: #f5f5f5;
+  --chart-1: #ffd166;
+  --chart-2: #06d6a0;
+  --chart-3: #ef476f;
+  --chart-4: #118ab2;
+  --chart-5: #ffd166;
+  --neo-shadow: 4px 4px 0px #f5f5f5;
+  --neo-shadow-sm: 2px 2px 0px #f5f5f5;
+  --neo-shadow-lg: 6px 6px 0px #f5f5f5;
 }
 
 @theme inline {
+  --font-sans: "Inter", "Inter Fallback", sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-neo-yellow: var(--neo-yellow);
+  --color-neo-cyan: var(--neo-cyan);
+  --color-neo-pink: var(--neo-pink);
+  --color-neo-green: var(--neo-green);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .neo-shadow {
+    box-shadow: var(--neo-shadow);
+  }
+  .neo-shadow-sm {
+    box-shadow: var(--neo-shadow-sm);
+  }
+  .neo-shadow-lg {
+    box-shadow: var(--neo-shadow-lg);
+  }
+  .neo-border {
+    border: 2px solid var(--border);
+  }
+  .neo-border-3 {
+    border: 3px solid var(--border);
+  }
+  .neo-btn-hover {
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .neo-btn-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--border);
+  }
+  .neo-btn-hover:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0px var(--border);
+  }
 }
