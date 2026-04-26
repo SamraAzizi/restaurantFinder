@@ -1,0 +1,1 @@
+Can you recommend 5 highly-rated restaurants near latitude {{LATITUDE}}, longitude {{LONGITUDE}} with diverse cuisines?
