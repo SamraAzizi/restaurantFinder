@@ -1,0 +1,19 @@
+I like {{CUISINES}}. {{CRAVING}}
+
+My saved restaurants: {{SAVED_NAMES}}
+
+Treat my saved places as taste signals only—match their food/vibe but do not repeat them.
+
+Request: recommend 5 restaurants near the user_context location.
+
+Rules:
+- Results must try to match user preferences. Output 5 restaurants no matter what.
+- For each recommendation, explain WHY I would like it based on my saved restaurants.
+
+Return exactly 5 entries as JSON (double quotes, no trailing commas) shaped like:
+[
+  { "id": "yelp-id", "name": "Name", "why": "Short personalized reason" },
+  ...
+]
+
+Output only that JSON array.
